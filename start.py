@@ -46,19 +46,22 @@ class MainMenu():
                 break
                 
             elif "send-reset-password" in command:
-                user_email = sql_manager.show_email()
-                self.send_mail(user_email)
+                username = command.split(' ')[1]
+                user_email = sql_manager.show_email(username)
+                new_pass = hash_pass(str(time.time()))
+                sql_manager.change_pass_for_email(new_pass, username, user_email)
+                self.send_mail(user_email, new_pass)
             
             elif "reset-password" in command:
-                pass    
+                break    
             
             else:
                 print("Not a valid command")
         
-    def send_mail(self, user_email):
+    def send_mail(self, user_email, new_password):
         fromaddr = 'lpapazow@gmail.com'
         toaddrs = user_email
-        msg = hash_pass()
+        msg = new_password
         username = 'lpapazow@gmail.com'
         password = os.environ['MY_SMTP_PASS']
         server = smtplib.SMTP('smtp.gmail.com:587')
