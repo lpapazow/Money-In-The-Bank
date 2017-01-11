@@ -10,6 +10,8 @@ CHANGE_CLIENT_MESSAGE = '''UPDATE clients SET message = ? WHERE id = ?'''
   
 CHANGE_CLIENT_PASS = '''UPDATE clients SET password = ? WHERE id = ?'''
 
+CHANGE_CLIENT_PASS_FROM_USERNAME_AND_EMAIL = '''UPDATE clients SET password = ? WHERE username = ? AND email = ?'''
+
 REGISTER_USER = '''INSERT INTO CLIENTS (username, password) 
       VALUES (?, ?)'''
 
