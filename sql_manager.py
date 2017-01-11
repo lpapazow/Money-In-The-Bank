@@ -15,6 +15,9 @@ def change_message(new_message, logged_user):
     conn.commit()
     logged_user.set_message(new_message)
     
+def change_pass_for_email(new_pass, username, email):    
+    cursor.execute(sql_manage_queries.CHANGE_CLIENT_PASS_FROM_USERNAME_AND_EMAIL, (new_pass, username, email))
+    conn.commit()
 
 def change_pass(new_pass, logged_user):
     cursor.execute(sql_manage_queries.CHANGE_CLIENT_PASS, (new_pass, logged_user.get_id()))
