@@ -56,7 +56,6 @@ class MainMenu():
                 print("Not a valid command")
         
     def send_mail(self, user_email):
-        server = smtplib.SMTP('smtp.gmail.com', '587', 'localhost')
         fromaddr = 'lpapazow@gmail.com'
         toaddrs = user_email
         msg = hash_pass()
